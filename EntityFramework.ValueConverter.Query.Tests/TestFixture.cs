@@ -13,9 +13,9 @@ namespace EntityFramework.ValueConverter.Query.Tests
         }
 
 
-        public TestContext Context { get; set; }
+        public TestContext Context { get; }
 
-        public void InitDatabase()
+        private void InitDatabase()
         {
             Context.TestEntities.Add(new TestEntity
                                      {
@@ -26,19 +26,20 @@ namespace EntityFramework.ValueConverter.Query.Tests
                                                       "3"
                                                   }
                                      });
+            Context.TestEntities.Add(new TestEntity
+                                     {
+                                         Values = new[]
+                                                  {
+                                                      "2",
+                                                      "2",
+                                                      "3"
+                                                  }
+                                     });
             Context.SaveChanges();
         }
         
         public void Dispose()
         {
-            // if (!_disposed)
-            // {
-            //     _disposed = true;
-            //     
-            //     Context.TestEntities.RemoveRange(Context.TestEntities.ToArray());
-            //     Context.SaveChanges();
-            // }
-            
             Context.Dispose();
         }
     }

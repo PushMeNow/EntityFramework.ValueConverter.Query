@@ -29,7 +29,6 @@ namespace EntityFramework.ValueConverter.Query.Tests
             _connection = new SqliteConnection("DataSource=:memory:");
             _connection.Open();
 
-            // optionsBuilder.Options.Extensions = t.Extensions;
             optionsBuilder.UseSqlite(_connection);
             ((IDbContextOptionsBuilderInfrastructure)optionsBuilder).AddOrUpdateExtension(new ArrayOptionExtension());
         }
